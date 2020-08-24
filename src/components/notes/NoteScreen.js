@@ -1,4 +1,4 @@
-    import React from 'react'
+import React from 'react'
 import { NoteAppBar } from './NoteAppBar'
     
     export const NoteScreen = () => {

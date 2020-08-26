@@ -4,6 +4,7 @@ import validator from 'validator';
 import { Link } from 'react-router-dom'
 import useForm from '../hooks/useForm'
 import { setError, removeError } from '../actions/ui';
+import { startRegisterWithEmailPasswordName } from '../actions/auth';
 
 
 const RegisterScreen = () => {
@@ -14,9 +15,9 @@ const RegisterScreen = () => {
 
     const [ formValues, handleInputChange ]  = useForm({
         name: 'Veronica',
-        email: 'm.villagordovera@gmail.com',
-        password: '12345',
-        password2: '12345'
+        email: 'veronikazaragoza@gmail.com',
+        password: '123456',
+        password2: '123456'
     });
 
     const { name, email, password, password2 } = formValues;
@@ -25,7 +26,7 @@ const RegisterScreen = () => {
         e.preventDefault();
 
         if( isFormValue() ) {
-            console.log('Todos los campos son correctos')
+            dispatch( startRegisterWithEmailPasswordName( email, password, name));
         }
     }
 

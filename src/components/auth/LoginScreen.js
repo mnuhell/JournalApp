@@ -1,15 +1,20 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import {GoogleButton} from '../botones/Google';
 import useForm from '../hooks/useForm';
 import { startLoginEmailPassword } from '../actions/auth';
+import validator, { isEmail } from 'validator';
+import { setError, removeError, startLoading, finishLoading } from '../actions/ui';
 
 
 const LoginScreen = () => {
 
     const dispatch = useDispatch();
+
+    const {loading} = useSelector(state => state.ui);
+
     const [ formValues, handleInputChange ] = useForm({
-        email: 'm.villagordovera@gmail.com',
+        email: 'veronikazaragoza@gmail.com',
         password: '123456'
     });
 
@@ -17,7 +22,21 @@ const LoginScreen = () => {
 
     const handleSubmit = evt => {
         evt.preventDefault();
-        dispatch( startLoginEmailPassword(email, password) )
+
+        if( isFormValid() ){
+            dispatch( startLoginEmailPassword(email, password) )
+        }
+    }
+
+    const isFormValid = () => {
+
+        if( !validator.isEmail(email)) {
+            dispatch( setError('El email no es correcto'));
+            return false;
+        }
+
+        dispatch( removeError() )
+        return true;
     }
 
     return (
@@ -46,6 +65,7 @@ const LoginScreen = () => {
                 <button
                 type="submit"
                 className="btn btn-primary btn-block"
+                disabled= { loading }
                 >
                 Login
                 </button>

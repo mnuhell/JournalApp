@@ -59,4 +59,18 @@ export const login = (uid, displayName) => ({
         uid,
         displayName,
     }
-})
+});
+
+export const startLogout = () => {
+
+    return async ( dispatch ) => {
+        await firebase.auth().signOut();
+
+        dispatch( logout() );
+    }
+
+};
+
+export const logout = () => ({
+    type: types.logout
+});

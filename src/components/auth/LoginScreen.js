@@ -3,8 +3,8 @@ import { useDispatch, useSelector} from 'react-redux';
 import {GoogleButton} from '../botones/Google';
 import useForm from '../hooks/useForm';
 import { startLoginEmailPassword } from '../actions/auth';
-import validator, { isEmail } from 'validator';
-import { setError, removeError, startLoading, finishLoading } from '../actions/ui';
+import validator from 'validator';
+import { setError, removeError } from '../actions/ui';
 
 
 const LoginScreen = () => {

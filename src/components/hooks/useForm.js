@@ -5,8 +5,8 @@ const useForm = ( initialState = {} ) => {
 
     const [ values, setValues ] = useState(initialState);
 
-    const reset = () => {
-        setValues(initialState);
+    const reset = ( newStateForm = initialState) => {
+        setValues(newStateForm);
     }
 
     const handleInputChange = ({ target }) => {

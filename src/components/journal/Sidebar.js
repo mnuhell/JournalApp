@@ -12,7 +12,7 @@ const Sidebar = () => {
     const { name } = useSelector( state => state.auth);
     const handleLogout = (e) => {
         e.preventDefault();
-        dispatch( startLogout() )
+        dispatch( startLogout() );
     }
 
     const HandleAddNew = () => {

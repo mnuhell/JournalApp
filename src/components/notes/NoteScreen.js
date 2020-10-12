@@ -58,7 +58,7 @@ import { NoteAppBar } from './NoteAppBar'
                         (note.url) &&
                         (<div className="notes__image">
                             <img
-                            src="https://i.blogs.es/594843/chrome/2560_3000.jpg"
+                            src={note.url}
                             alt="imagen"
                             />
                         </div>)
